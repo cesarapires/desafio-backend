@@ -18,12 +18,12 @@ services:
     ports: 
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: 'challenge_db'
-      MYSQL_USER_DATABASE: Userchallenge
-      MYSQL_PASSWORD: userpass
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: challenge
+      MYSQL_USER: Userchallenge
+      MYSQL_PASSWORD: userpass  
     volumes:
-      - ./db:/var/lib/mysql
+        - ./db:/var/lib/mysql
     networks:
       - challenge
 

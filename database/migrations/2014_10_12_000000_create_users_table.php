@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->date('birthday');
             $table->string('cpf',14);
 
+            $table->float('balance');
+
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
