@@ -1,0 +1,32 @@
+version: '3.7'
+
+services: 
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: 'challenge'
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - challenge
+  db:
+    image: mysql:5.7
+    restart: always
+    ports: 
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: 'challenge_db'
+      MYSQL_USER_DATABASE: Userchallenge
+      MYSQL_PASSWORD: userpass
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+      - challenge
+
+networks:
+  challenge:
+    driver: bridge
