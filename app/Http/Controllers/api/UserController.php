@@ -13,14 +13,7 @@ class UserController extends Controller
 
     public function index()
     {
-        //$user = User::paginate(15);
-        return User::all();
-    }
-
-
-    public function create()
-    {
-        //
+        return User::orderByDesc('created_at')->get();
     }
 
     public function store(Request $request)
@@ -30,31 +23,33 @@ class UserController extends Controller
         $age = $birthday->diff($today);
 
         if($age->y<18){
-            return ["status"=>404,
-            "error"=>"Unauthorized",
+            return ["code"=>401,
+            "status"=>"Unauthorized",
             "message"=>"Usuário com idade inferior a 18 anos"];
         }
         else{
             try{
                 User::create($request->all()); 
-                return ["status"=>201,
-                "error"=>"Created",
+                return ["code"=>201,
+                "status"=>"Created",
                 "message"=>"Usuário cadastrado com sucesso"];
             }
             catch(Exception $e){
-
+                return ["status"=>$e->getMessage()];
             }
         }                
     }
 
-    public function show($id)
+    public function show($userId)
     {
-        return  User::where('idUser', '=', $id)->firstOrFail();;
-    }
-
-    public function edit($id)
-    {
-        //
+        if(User::where('idUser','=',$userId)->first()===null){
+            return ["code"=>404,
+            "status"=>"Not Found",
+            "message"=>"Usuário não encontrado"];
+        }
+        else{
+            return User::where('idUser','=',$userId)->firstOrFail();       
+        }    
     }
 
     public function update(Request $request, $id)
@@ -62,8 +57,18 @@ class UserController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy($userId)
     {
-        //
+        if(User::where('idUser','=',$userId)->first()===null){
+            return ["code"=>404,
+            "status"=>"Not Found",
+            "message"=>"Usuário não encontrado"];
+        }
+        else{
+            User::where('idUser','=',$userId)->delete();   
+            return ["code"=>200,
+            "status"=>"Removed",
+            "message"=>"Usuário removido com sucesso"];    
+        }     
     }
 }

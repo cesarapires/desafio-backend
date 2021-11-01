@@ -19,6 +19,9 @@ class User extends JsonResource
             'name'=>$this->name,
             'birthday'=>$this->birthday,
             'cpf'=>$this->cpf,
+
+            'balance'=>$this->balance,
+
             'email'=>$this->email
         ];
     }
