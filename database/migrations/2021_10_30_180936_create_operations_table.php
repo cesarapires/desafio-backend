@@ -6,24 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateOperationsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('operations', function (Blueprint $table) {
-            $table->id();
+            $table->id('operation_id');
+            $table->foreignId('user_id')->references('user_id')->on('users');
+            $table->string('type',1);
+            $table->float('value');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('operations');

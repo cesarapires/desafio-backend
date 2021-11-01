@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class operation extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'operation_id',
+        'user_id',
+        'value',
+        'type',
+        'created_At',
+        'updated_At'
+    ];
 }

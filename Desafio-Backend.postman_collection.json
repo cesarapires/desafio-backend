@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "696ad7a1-b174-469c-8d3f-c04c9bda223c",
+		"name": "Desafio-Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Listar Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/user?name=João Tomás Matheus Barros&birthday=1944-07-12&cpf=761.618.541-04&email=joaotomasmatheusbarros@transportesflores.com.br&password=eB1qq7iLbs&balance=0",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "João Tomás Matheus Barros"
+								},
+								{
+									"key": "birthday",
+									"value": "1944-07-12"
+								},
+								{
+									"key": "cpf",
+									"value": "761.618.541-04"
+								},
+								{
+									"key": "email",
+									"value": "joaotomasmatheusbarros@transportesflores.com.br"
+								},
+								{
+									"key": "password",
+									"value": "eB1qq7iLbs"
+								},
+								{
+									"key": "balance",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mostrar apenas um cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/user/8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticar Usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/user/login?email=cesar.augusto.pires@hotmail.com&password=5momfQ80",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "cesar.augusto.pires@hotmail.com"
+								},
+								{
+									"key": "password",
+									"value": "5momfQ80"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Operation",
+			"item": [
+				{
+					"name": "Cadastrar Operação",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/operation?user_id=1&type=C&value=1750.00",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"operation"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "1"
+								},
+								{
+									"key": "type",
+									"value": "C"
+								},
+								{
+									"key": "value",
+									"value": "1750.00"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Saldo Atual",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/operation/balance/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"operation",
+								"balance",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lista de Operações",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/operation/balance/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"operation",
+								"balance",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remover operação",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/operation/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"operation",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

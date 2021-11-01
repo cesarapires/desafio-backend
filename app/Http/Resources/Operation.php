@@ -14,6 +14,16 @@ class Operation extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'operation_id'=>$this->operation_id,
+            'user_id'=>$this->user_id,
+            'type'=>$this->type,
+            'value'=>$this->value,
+            'cpf'=>$this->cpf,
+
+            'balance'=>$this->balance,
+
+            'email'=>$this->email
+        ];
     }
 }
