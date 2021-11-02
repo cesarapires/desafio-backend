@@ -120,9 +120,7 @@ class UserController extends Controller
         else{
             return ["code"=>404,
             "status"=>"Not Found",
-            "message"=>"Senha Incorreta",
-            "Senha Salva"=>$request->password,
-            "Senha"=>$user->password];
+            "message"=>"Senha Incorreta"];
         }
     }
 }

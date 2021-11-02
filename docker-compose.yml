@@ -21,8 +21,6 @@ services:
       MYSQL_DATABASE: challenge
       MYSQL_USER: Userchallenge
       MYSQL_PASSWORD: userpass  
-    volumes:
-        - ./db:/var/lib/mysql
     networks:
       - challenge
 
