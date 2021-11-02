@@ -32,7 +32,7 @@ class User extends Authenticatable
         'updated_At'
     ];
 
-    protected $primarykey = 'idUser';
+    protected $primarykey = 'user_id';
 
     /**
      * The attributes that should be hidden for serialization.

@@ -12,7 +12,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('user', UserController::class);
 Route::post('user/login', [UserController::class, 'login']);
-Route::put('user/updatebalance/{slug}', [UserController::class], 'updatebalance');
 Route::resource('operation', OperationController::class);
-Route::post('operation/balance/{slug}', [OperationController::class, 'balance']);
-Route::post('operation/listbalance/{slug}', [OperationController::class, 'listOperaton']);
+Route::post('operation/balance/{user_id}', [OperationController::class, 'balance']);
+Route::post('operation/listOperation/{user_id}', [OperationController::class, 'listOperation']);

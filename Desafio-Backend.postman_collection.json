@@ -93,6 +93,32 @@
 					"response": []
 				},
 				{
+					"name": "Atulizar saldo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/user/1?balance=50",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"1"
+							],
+							"query": [
+								{
+									"key": "balance",
+									"value": "50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Remover cliente",
 					"request": {
 						"method": "DELETE",
@@ -207,15 +233,14 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "localhost:8080/api/operation/balance/1",
+							"raw": "localhost:8080/api/listOperaton/1",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
 								"api",
-								"operation",
-								"balance",
+								"listOperaton",
 								"1"
 							]
 						}

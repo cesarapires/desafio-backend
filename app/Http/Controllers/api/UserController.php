@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User as User;
+use App\Models\Operation as Operation;
 use Auth;
 
 
@@ -53,43 +54,52 @@ class UserController extends Controller
         }                
     }
 
-    public function show($userId)
+    public function show($user_id)
     {
-        if(User::where('user_id','=',$userId)->first()===null){
+        if(User::where('user_id','=',$user_id)->first()===null){
             return ["code"=>404,
             "status"=>"Not Found",
             "message"=>"Usuário não encontrado"];
         }
         else{
-            return User::where('user_id','=',$userId)->firstOrFail();       
+            return User::where('user_id','=',$user_id)->firstOrFail();       
         }    
     }
 
-    public function update(Request $request, $userId)
+    public function destroy($user_id)
     {
-        if(User::where('user_id','=',$userId)->first()===null){
+        if(User::where('user_id','=',$user_id)->first()===null){
             return ["code"=>404,
             "status"=>"Not Found",
             "message"=>"Usuário não encontrado"];
         }
         else{
-
-        }
+            if(Operation::where('user_id','=',$user_id)->first()===null){
+                User::where('user_id','=',$user_id)->delete();   
+                return ["code"=>200,
+                "status"=>"Removed",
+                "message"=>"Usuário removido com sucesso"];    
+            }
+            else{
+                return ["code"=>403,
+                "status"=>"Unauthorized",
+                "message"=>"Usuário possue movimentações vinculados ao seu cadastro"];     
+            }
+        }     
     }
 
-    public function destroy($userId)
-    {
-        if(User::where('user_id','=',$userId)->first()===null){
+    public function update(Request $request, $user_id){
+        if(User::where('user_id','=',$user_id)->first()===null){
             return ["code"=>404,
             "status"=>"Not Found",
             "message"=>"Usuário não encontrado"];
         }
         else{
-            User::where('user_id','=',$userId)->delete();   
+            User::where('user_id',$user_id)->update(['balance' => $request->balance]);
             return ["code"=>200,
-            "status"=>"Removed",
-            "message"=>"Usuário removido com sucesso"];    
-        }     
+            "status"=>"Confirmed",
+            "message"=>"Saldo do usuário atualizado"];
+        }
     }
 
     public function login(Request $request){
@@ -114,11 +124,5 @@ class UserController extends Controller
             "Senha Salva"=>$request->password,
             "Senha"=>$user->password];
         }
-    }
-
-    public function updatebalance(Request $request, $user_id)
-    {
-        User::where('user_id','=', $user_id)
-      ->update(['balance' => $request->balance]);
     }
 }

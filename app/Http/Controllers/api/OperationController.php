@@ -65,7 +65,7 @@ class OperationController extends Controller
         }
     }
 
-    public function listOperaton($user_id){
+    public function listOperation($user_id){
         if(User::where('user_id', '=', $user_id)->first() == null){
             return ["code"=>404,
             "status"=>"Not Found",

@@ -1,65 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Desafio Back-End - César Augusto Pires
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Features
 
-## About Laravel
+- [x] Cadastro de usuário
+- [x] Listagem
+- [x] Listar um único usuário
+- [x] Excluir através do id
+- [x] Associação entre movimentação e usuário
+- [x] Visualizar todas as movimentações de um usuário
+- [x] Excluir movimentação relacionada ao usuária
+- [ ] Exportar arquivo por excel (csv)
+- [x] Adicionar o saldo inicial no usuário
+- [x] Somatorio da movimentação e do saldo incial
+- [x] Excluir apenas usuário sem movimentação
+- [x] Cadastrar apenas usuários maiores de 18 anos
+- [ ] Exportar arquivo por excel (csv), com cabeçalho
+- [ ] Criar validações com base na Request
+- [ ] Utilizar cache para otimizar as consultas e buscas
+- [ ] Criar Seeders ou Inicializadores de dados para o usuários e suas movimentações
+- [ ] Criar os métodos baseados em algum método de autênticação
+- [x] Documentação dos endpoint`s
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Rodando o Projeto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Rodar os seguintes comando, essa sequência terá como objetivo baixar o projeto e configurar o ambiente laravel e o banco de dados será necessário ter instalado o docker e o git anteriormente.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  ```bash
+  git clone https://github.com/cesarapires/desafio-backend.git
 
-## Learning Laravel
+  cd desafio-backend/
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+  cp .env.example .env
+  ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Agora você deve rodar o comando para iniciar o container
+  
+  ```bash
+  docker-compose up -d
+  ```
 
-## Laravel Sponsors
+- Feito isso, agora você terá que ir para dentro do container para instalar as dependências do projeto. Para isso você utilizará o comando: 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+  ```bash
+  docker ps
+  ```
 
-### Premium Partners
+  Com isso você verá os containers que estão rodando na sua máquina, copie o ID da imagem do challenge para usar o comando abaixo, 
+  subtituindo o ID "bc6299a9fb53" pelo ID gerado para o seu container e em seguida continuar executando os outros comandos:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+  ```bash
+  docker exec -it bc6299a9fb53 bash
+  composer install
+  php artisan key:generate
+  php artisan migrate
+  ```
+- Por fim, o desáfio estará rodando na URL: `localhost:8080`.
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Documentação da API
 
-## Code of Conduct
+- Para realizar todos os testes foi utilizado o Postman, para ver a documentação você pode procurar pelo arquivo Desafio-Backend.postman_collection.json que está na raiz do projeto ou utilzar o link abaixo:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[Documentação](Desafio-Backend.postman_collection.json)
