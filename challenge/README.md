@@ -28,7 +28,7 @@
   ```bash
   git clone git@github.com:cesarapires/desafio-backend.git
 
-  cd desafio-backend/
+  cd desafio-backend/challenge
 
   cp .env.example .env
   ```
