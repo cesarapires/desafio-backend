@@ -26,7 +26,7 @@
 - Rodar os seguintes comando, essa sequência terá como objetivo baixar o projeto e configurar o ambiente laravel e o banco de dados será necessário ter instalado o docker e o git anteriormente.
 
   ```bash
-  git clone https://github.com/cesarapires/desafio-backend.git
+  git clone git@github.com:cesarapires/desafio-backend.git
 
   cd desafio-backend/
 
